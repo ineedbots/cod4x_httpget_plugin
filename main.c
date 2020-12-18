@@ -20,9 +20,19 @@ void scriptHTTPGet()
   Plugin_HTTP_FreeObj(r);
 }
 
+void printConsole()
+{
+  char *prtstr = Plugin_Scr_GetString(0);
+  if (!prtstr)
+    return;
+
+  Plugin_Printf("%s", prtstr);
+}
+
 PCL int OnInit()
 {
   Plugin_ScrAddFunction("HTTPS_GetString", scriptHTTPGet);
+  Plugin_ScrAddFunction("PrintConsole", printConsole);
 
   return 0;
 }
